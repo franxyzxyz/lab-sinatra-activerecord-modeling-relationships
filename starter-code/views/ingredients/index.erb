@@ -1,0 +1,29 @@
+<h1>ALL THE INGREDIENTS</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Recipes ID</th>
+    </tr>
+  </thead>
+  <% @ingredients.each do |ingredient| %>
+  <tr>
+    <td><%= ingredient.id%></td>
+    <td><%= ingredient.name%></td>
+    <td>
+      <% ingredient.recipes.each do |recipe| %>
+        <a href="/recipe/view/<%= recipe.id%>">#<%= recipe.id%></a>
+      <% end %>
+    </td>
+    <td><a href="/ingredient/view/<%= ingredient.id%>" class="btn btn-primary">DETAILS</td>
+    <td><a href="/ingredient/edit/<%= ingredient.id%>" class="btn btn-success">EDIT</td>
+    <td>
+    <form method="POST" action="/ingredient/delete/<%= ingredient.id%>">
+      <input type="hidden" name="_method" value="delete">
+      <button action="submit" class="btn btn-danger">DELETE</button>
+    </form>
+  </tr>
+  <% end %>
+</table>

@@ -1,0 +1,34 @@
+<h1>ALL THE COURSES</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Ingredients List</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <% @courses.each do |course| %>
+  <tr>
+    <td><%= course.id%></td>
+    <td><%= course.title%></td>
+    <td>
+      <ul>
+      <% course.ingredients.each do |ingredient| %>
+        <li><%= ingredient.name%></li>
+      <% end %>
+      </ul>
+    </td>
+    <td><a href="/course/view/<%= course.id%>" class="btn btn-primary">DETAILS</td>
+    <td><a href="/course/edit/<%= course.id%>" class="btn btn-success">EDIT</td>
+    <td>
+    <form method="POST" action="/course/delete/<%= course.id%>">
+      <input type="hidden" name="_method" value="delete">
+      <button action="submit" class="btn btn-danger">DELETE</button>
+    </form>
+  </tr>
+  <% end %>
+</table>

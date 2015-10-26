@@ -1,0 +1,12 @@
+<h1>Edit Ingredient</h1>
+
+<form action="/ingredient/edit/<%= @ingredient.id %>" method="POST" class="form-horizontal">
+  <input type="hidden" name="_method" value="put">
+  <div class="form-group">
+    <label for="i_name" class="col-sm-2 control-label">Name</label>
+    <div class="col-sm-4">
+      <input type="text" id="i_name" name="ingredient[name]" class="form-control" value=<%= @ingredient.name %>>
+    </div>
+  </div>
+  <button action="submit" class="btn btn-primary">UPDATE</button>
+</form>

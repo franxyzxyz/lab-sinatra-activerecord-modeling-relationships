@@ -1,0 +1,44 @@
+<h1>ADD A RECIPE</h1>
+
+<form action="/recipe/add" method="POST" class="form-horizontal">
+  <div class="form-group">
+    <label for="recipe_title" class="col-sm-2 control-label">Title</label>
+    <div class="col-sm-4">
+      <input type="text" id="recipe_title" name="recipe[title]" class="form-control">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="recipe_servings" class="col-sm-2 control-label">Servings</label>
+    <div class="col-sm-4">
+      <input type="number" id="recipe_servings" name="recipe[servings]" class="form-control">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="recipe_ingredients" class="col-sm-2 control-label">Ingredients</label>
+    <div class="col-sm-4">
+      <input type="integer" id="recipe_ingredients" name="ingredients" class="form-control" placeholder="separate by space (eg: Tomatoes Cheese)">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="recipe_course" class="col-sm-2 control-label">Course</label>
+    <div class="col-sm-4">
+      <select class="form-control" id="recipe_course" name="course">
+        <% @courses.each do |course|%>
+          <option><%= course.title %></option>
+        <% end %>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="recipe_description" class="col-sm-2 control-label">Description</label>
+    <div class="col-sm-4">
+      <textarea id="recipe_description" name="recipe[description]" class="form-control" rows="4"></textarea>
+    </div>
+  </div>
+
+  <button action="submit">ADD</button>
+</form>
